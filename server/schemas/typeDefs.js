@@ -32,6 +32,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addTodo (userId: ID!, item: String!): User
     deleteTodo (userId: ID!, todoId: ID!): User
+  }
 `;
 
 module.exports = typeDefs;
