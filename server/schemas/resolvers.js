@@ -49,12 +49,13 @@ const resolvers = {
       return { token, user };
     },
     // mutation to add a todo item
-    addTodo: async (parent, { item }, context) => {
+    addTodo: async (parent, { userId, item }, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
+          {_id: userId},
           {$addToSet: { todos: { item, completed: false } }},
-          { new: true }
-        )
+          {new: true}
+        );
       }
       throw new AuthenticationError('You need to be logged in!');
     },
