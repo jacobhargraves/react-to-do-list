@@ -1,6 +1,9 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+// import schema from Todo.js
+const todoSchema = require('./Todo');
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -19,12 +22,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  todos: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Todo',
-    },
-  ],
+  todos: [todoSchema] ,
 });
 
 userSchema.pre('save', async function (next) {
@@ -39,6 +37,11 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
+// when we query a user, we'll also get another field called `todoCount` with the number of todos we have
+userSchema.virtual('todoCount').get(function () {
+  return this.todos.length;
+});
 
 const User = model('User', userSchema);
 
