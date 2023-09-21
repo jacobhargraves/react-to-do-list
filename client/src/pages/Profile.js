@@ -36,7 +36,7 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <div className='container'>
       <TodoList todos={user.todos} userId={user._id}/>
       {!userParam && (
       <TodoForm userId={user._id}/>
