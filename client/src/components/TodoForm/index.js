@@ -7,7 +7,7 @@ import Auth from '../../utils/auth';
 
 const TodoForm = ({ userId }) => {
   const [item, setItem] = useState('');
-  const [characterCount, setCharacterCouint] = useState(0);
+  const [characterCount, setCharacterCount] = useState(0);
 
   const [addItem, {error}] = useMutation(ADD_TODO);
 
@@ -23,6 +23,7 @@ const TodoForm = ({ userId }) => {
       });
 
       setItem('');
+      setCharacterCount(0);
     } catch (err) {
       console.error(err);
     }
@@ -34,7 +35,7 @@ const TodoForm = ({ userId }) => {
     // make sure field is correct and value is less than or equal to 280 char
     if (name === 'item' && value.length <= 280) {
       setItem(value);
-      setCharacterCouint(value.length);
+      setCharacterCount(value.length);
     }
   };
 

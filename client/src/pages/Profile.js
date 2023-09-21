@@ -37,6 +37,7 @@ const Profile = () => {
 
   return (
     <div>
+      <TodoList todos={user.todos}/>
       {!userParam && (
       <TodoForm userId={user._id}/>
       )}
