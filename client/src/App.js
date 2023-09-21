@@ -63,6 +63,10 @@ function App() {
                 path="/me" 
                 element={<Profile />}
               />
+              <Route 
+                path="/profiles/:username" 
+                element={<Profile />}
+              />
             </Routes>
           </div>
           <Footer />
