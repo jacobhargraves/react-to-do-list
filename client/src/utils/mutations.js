@@ -40,4 +40,18 @@ export const ADD_TODO = gql`
   }
 `;
 
-// code to delete todo item
+export const DELETE_TODO = gql`
+  mutation deleteTodo ($userId: ID!, $todoId: ID!) {
+    deleteTodo (userId: $userId, todoId: $todoId) {
+      _id
+      username
+      email
+      todos{
+        _id
+        item
+        completed
+        createdAt
+      }
+    }
+  }
+`;
