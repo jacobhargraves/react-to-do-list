@@ -37,7 +37,9 @@ const Profile = () => {
 
   return (
     <div>
+      {!userParam && (
       <TodoForm userId={user._id}/>
+      )}
     </div>
   );
 };

@@ -54,7 +54,7 @@ const resolvers = {
         return User.findOneAndUpdate(
           {_id: userId},
           {$addToSet: { todos: { item, completed: false } }},
-          {new: true}
+          {new: true, runValidators: true,}
         );
       }
       throw new AuthenticationError('You need to be logged in!');
