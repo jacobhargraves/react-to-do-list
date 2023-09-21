@@ -18,7 +18,7 @@ const Profile = () => {
 
   // checks if data has a me property or that data has a user property. if not, assign undefined
   const user = data?.me || data?.user || {};
-  console.log(user);
+  // console.log(user);
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
   }
@@ -37,7 +37,7 @@ const Profile = () => {
 
   return (
     <div>
-      <TodoList todos={user.todos}/>
+      <TodoList todos={user.todos} userId={user._id}/>
       {!userParam && (
       <TodoForm userId={user._id}/>
       )}
