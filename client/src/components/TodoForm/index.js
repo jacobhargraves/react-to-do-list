@@ -40,7 +40,7 @@ const TodoForm = ({ userId }) => {
   };
 
   return (
-    <div className='card shadow-lg w-50 p-2'>
+    <div className='card shadow-lg col-lg-6 p-2'>
       <h3>Add a Todo</h3>
       
       {Auth.loggedIn() ? (

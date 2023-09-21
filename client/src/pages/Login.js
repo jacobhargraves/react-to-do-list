@@ -42,6 +42,9 @@ const Login = (props) => {
 
   return (
     <div className="container">
+      {data ? (
+        <p>View your profile to create a todo list!</p>
+      ) : (
       <div className="row d-flex justify-content-center">
         <main className="col-lg-6 col-md-12 card shadow-lg form-signin m-auto">
           <form className="m-2" onSubmit={handleFormSubmit}>
@@ -79,6 +82,12 @@ const Login = (props) => {
           </form>
         </main>
       </div>
+      )}
+      {error && (
+        <div className="my-3 p-3 bg-danger text-white">
+          {error.message}
+        </div>
+      )}
     </div>
   );
 };
